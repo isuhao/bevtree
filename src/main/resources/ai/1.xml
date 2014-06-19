@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NodeSelector id="1">
+  <debugName>root</debugName>
+  <children id="2">
+    <NodeSequence id="3">
+      <debugName>move</debugName>
+      <precondition class="HasSound" id="4"/>
+      <children id="5">
+        <FaceTo id="6">
+          <debugName>FaceTo</debugName>
+          <parent class="NodeSequence" reference="3"/>
+        </FaceTo>
+        <Idle id="7">
+          <debugName>Idle</debugName>
+          <parent class="NodeSequence" reference="3"/>
+        </Idle>
+        <MoveTo id="8">
+          <debugName>MoveTo</debugName>
+          <parent class="NodeSequence" reference="3"/>
+          <waitTicks>0</waitTicks>
+        </MoveTo>
+        <LookAround id="9">
+          <debugName>LookAround</debugName>
+          <parent class="NodeSequence" reference="3"/>
+          <waitTicks>0</waitTicks>
+        </LookAround>
+      </children>
+      <parent class="NodeSelector" reference="1"/>
+      <currentNodeIndex>-1</currentNodeIndex>
+    </NodeSequence>
+    <NodeSequence id="10">
+      <debugName>fight</debugName>
+      <precondition class="hasMonster" id="11"/>
+      <children id="12">
+        <ToCD id="13">
+          <debugName>cd</debugName>
+          <parent class="NodeSequence" reference="10"/>
+          <cd>5000</cd>
+        </ToCD>
+        <ToSkill id="14">
+          <debugName>skill</debugName>
+          <parent class="NodeSequence" reference="10"/>
+          <skill>1000</skill>
+        </ToSkill>
+      </children>
+      <parent class="NodeSelector" reference="1"/>
+      <currentNodeIndex>-1</currentNodeIndex>
+    </NodeSequence>
+    <NodeParallel id="15">
+      <debugName>patrol</debugName>
+      <children id="16">
+        <Hovering id="17">
+          <debugName>Idle</debugName>
+          <parent class="NodeParallel" reference="15"/>
+        </Hovering>
+        <NodeSelector id="18">
+          <debugName>smoking</debugName>
+          <children id="19">
+            <Smoking id="20">
+              <debugName>Smoking</debugName>
+              <precondition class="NoHasQiangDao" id="21"/>
+              <parent class="NodeSelector" reference="18"/>
+            </Smoking>
+            <Coughing id="22">
+              <debugName>Coughing</debugName>
+              <precondition class="NoHasCoughFeeling" id="23"/>
+              <parent class="NodeSelector" reference="18"/>
+            </Coughing>
+          </children>
+          <parent class="NodeParallel" reference="15"/>
+          <currentSelectedIndex>-1</currentSelectedIndex>
+          <lastSelectedIndex>-1</lastSelectedIndex>
+        </NodeSelector>
+      </children>
+      <parent class="NodeSelector" reference="1"/>
+      <finishCondition>0</finishCondition>
+      <childrenStatus id="24">
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </childrenStatus>
+    </NodeParallel>
+  </children>
+  <currentSelectedIndex>-1</currentSelectedIndex>
+  <lastSelectedIndex>-1</lastSelectedIndex>
+</NodeSelector>

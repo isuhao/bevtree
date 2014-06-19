@@ -1,0 +1,34 @@
+		序列节点（前置条件HasSound）-- 
+		move       					面向FaceTo
+	    |		   
+	    |		   					闲置Idle
+	    |		   
+	    |	           				移动Move
+	    |	    
+	    |		   					看看四周LookAround
+	    |		   
+	    |
+(选择节点)
+_root----------序列节点（前置条件hasMonster）----冷却CD
+		  战斗     			 						施放技能                  注：此战斗为单个技能，如果多个技能需要配置选择节点后再									       添加多个技能多个序列节点。
+	    |		   			 
+	    |
+	    |
+	    |
+	    |		   |徘徊Hovering
+	    |		   |		    |------前置NoHasQiangDao
+	    |		   |		    |      抽烟Smoking
+		并行节点---		    	|	   
+		patrol	    选择节点	    |
+	    		   |smoking-----
+					    		|
+					    		|------前置NoHasCoughFeeling
+						 			        咳嗽Coughing
+
+序列（Sequence）：将其所有子节点依次执行，也就是说当前一个返回“完成”状态后，再运行先一个子节点
+选择（Selector）：选择其子节点的某一个执行
+并行（Parallel）：将其所有子节点都运行一遍
+
+前置（NodePreCondition）：用于判断是否满足的条件。
+
+这是一个简单的ai，分为移动，战斗，和巡逻。
